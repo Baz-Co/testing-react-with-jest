@@ -13,3 +13,12 @@ test('TodoComponent calls doneChange when todo is clicked', () => {
   p.simulate('click');
   expect(doneChange).toBeCalledWith(1);
 });
+
+test('TodoComponent renders the text inside it', () => {
+  const todo = { id: 1, done: false, name: 'Buy Milk' };
+  const wrapper = mount(
+    <Todo todo={todo} />
+  );
+  const p = wrapper.find('.toggle-todo');
+  expect(p.text()).toBe('Buy Milk');
+});
